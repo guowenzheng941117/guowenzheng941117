@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>win10的pgsql安装教程</title>
+    <link href="/2022/05/18/pgsqlinstall/"/>
+    <url>/2022/05/18/pgsqlinstall/</url>
+    
+    <content type="html"><![CDATA[<h2 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h2><p>右键 此电脑 –&gt; 管理 –&gt; 系统工具 –&gt; 本地用户和组 –&gt; 用户<br>右键 用户 –&gt; 新用户<br>新建一个 名为 postgres 的用户 密码为数据库密码 (后续会要求设置数据库密码，保持一致)</p><h2 id="下载pgsql-13-7-并安装"><a href="#下载pgsql-13-7-并安装" class="headerlink" title="下载pgsql 13.7 并安装"></a>下载pgsql 13.7 并安装</h2><p><a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">下载地址</a><br><a href="http://www.postgres.cn/v2/document">中文社区</a></p><p>右键管理员运行 –&gt; 按照提示默认安装<br>local 选择 chinese-simplified China<br>端口不变   密码设置与新建用户的密码保持一致<br>最后安装完会提示安装不完整，不需要管</p><h2 id="对安装目录授权"><a href="#对安装目录授权" class="headerlink" title="对安装目录授权"></a>对安装目录授权</h2><p>右键安装文件夹 PostgreSQL –&gt; 安全 –&gt; 编辑<br>添加 postgres 用户 并授予完全控制权限</p><h2 id="初始化数据库-并-设置服务"><a href="#初始化数据库-并-设置服务" class="headerlink" title="初始化数据库 并 设置服务"></a>初始化数据库 并 设置服务</h2><p>管理员运行cmd 并进入 PostgreSQL安装目录下的bin目录，运行以下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">initdb.exe -D ../data -W -U postgres<br></code></pre></td></tr></table></figure><p>输入密码与上面保持一致</p><p>初始化完成后添加服务，运行以下命令。  -D后接data位置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pg_ctl.exe register -N <span class="hljs-string">&quot;pgsql&quot;</span> -D <span class="hljs-string">&quot;D:\PostgreSQL\13\data&quot;</span> <br></code></pre></td></tr></table></figure><p>注册服务后 可以在windows服务面板找到pgsql并启动</p><p>右键 此电脑 –&gt; 管理 –&gt; 服务和应用程序 –&gt; 服务<br>找到 pgsql 右键启动</p><h3 id="感谢以下帮助"><a href="#感谢以下帮助" class="headerlink" title="感谢以下帮助"></a>感谢以下帮助</h3><p> <a href="https://hanbo.blog.csdn.net/article/details/122370326">csdn教程1</a><br> <a href="https://blog.csdn.net/weixin_44637422/article/details/121731941">csdn教程2</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pgsql</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>博客cdn问题</title>
     <link href="/2022/05/18/cdnforblog/"/>
     <url>/2022/05/18/cdnforblog/</url>
