@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>博客cdn问题</title>
+    <link href="/2022/05/18/cdnforblog/"/>
+    <url>/2022/05/18/cdnforblog/</url>
+    
+    <content type="html"><![CDATA[<h3 id="fluid官方修改cdn源为国内源"><a href="#fluid官方修改cdn源为国内源" class="headerlink" title="fluid官方修改cdn源为国内源"></a>fluid官方修改cdn源为国内源</h3><p> <a href="https://github.com/fluid-dev/hexo-theme-fluid/issues/656">Github Issue</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>博客</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>搭建博客</title>
     <link href="/2022/04/27/thanksforblog/"/>
     <url>/2022/04/27/thanksforblog/</url>
