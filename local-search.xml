@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>pgsql存储过程 plpgsql</title>
+    <link href="/2022/06/16/plpgsql/"/>
+    <url>/2022/06/16/plpgsql/</url>
+    
+    <content type="html"><![CDATA[<h4 id="创建存储过程"><a href="#创建存储过程" class="headerlink" title="创建存储过程"></a>创建存储过程</h4><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">CREATE OR REPLACE FUNCTION somefunc() RETURNS <span class="hljs-built_in">integer</span> AS $$<br>&lt;&lt; <span class="hljs-string">outerblock &gt;&gt;</span><br><span class="hljs-string">DECLARE</span><br><span class="hljs-string">    quantity integer := 30;</span><br><span class="hljs-string">BEGIN</span><br><span class="hljs-string">    RAISE NOTICE &#x27;Quantity here is %&#x27;, quantity;  -- Prints 30</span><br><span class="hljs-string">    quantity := 50;</span><br><span class="hljs-string">    --</span><br><span class="hljs-string">    -- 创建一个子块</span><br><span class="hljs-string">    --</span><br><span class="hljs-string">    DECLARE</span><br><span class="hljs-string">        quantity integer := 80;</span><br><span class="hljs-string">    BEGIN</span><br><span class="hljs-string">        RAISE NOTICE &#x27;Quantity here is %&#x27;, quantity;  -- Prints 80</span><br><span class="hljs-string">        RAISE NOTICE &#x27;Outer quantity here is %&#x27;, outerblock</span>.quantity;  -- Prints 50<br><br>    END;<br><br>    RAISE NOTICE <span class="hljs-string">&#x27;Quantity here is %&#x27;</span>, quantity;  -- Prints 50<br>RETURN quantity;<br><br>END;<br>$$ LANGUAGE plpgsql;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pgsql</tag>
+      
+      <tag>存储过程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python的数据库操作</title>
     <link href="/2022/06/16/pythonforsql/"/>
     <url>/2022/06/16/pythonforsql/</url>
@@ -48,6 +75,8 @@
     <tags>
       
       <tag>pgsql</tag>
+      
+      <tag>函数</tag>
       
     </tags>
     

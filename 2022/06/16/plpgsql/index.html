@@ -16,24 +16,24 @@
   <meta name="author" content="Guo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="字符串拼接用法:   ||  12# back字段 由 字符串和city字段重新拼接update cksw SET back&#x3D; &amp;#x27;由&amp;#x27; || city || &amp;#x27;上报后转入！&amp;#x27; || back  合并字符串函数用法：concat(a,b,c,,,,) 函数将所有参数链接为一个字符串并返回结果。 参数中的 NULL 会被忽略。 12select concat(&amp;">
+    <meta name="description" content="创建存储过程1234567891011121314151617181920212223CREATE OR REPLACE FUNCTION somefunc() RETURNS integer AS $$&lt;&lt; outerblock &gt;&gt;DECLARE    quantity integer :&#x3D; 30;BEGIN    RAISE NOTICE &amp;#x27;Quantity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pgsql的常用函数">
-<meta property="og:url" content="http://example.com/2022/06/16/pgsqlfunction/index.html">
+<meta property="og:title" content="pgsql存储过程 plpgsql">
+<meta property="og:url" content="http://example.com/2022/06/16/plpgsql/index.html">
 <meta property="og:site_name" content="红豆饼">
-<meta property="og:description" content="字符串拼接用法:   ||  12# back字段 由 字符串和city字段重新拼接update cksw SET back&#x3D; &amp;#x27;由&amp;#x27; || city || &amp;#x27;上报后转入！&amp;#x27; || back  合并字符串函数用法：concat(a,b,c,,,,) 函数将所有参数链接为一个字符串并返回结果。 参数中的 NULL 会被忽略。 12select concat(&amp;">
+<meta property="og:description" content="创建存储过程1234567891011121314151617181920212223CREATE OR REPLACE FUNCTION somefunc() RETURNS integer AS $$&lt;&lt; outerblock &gt;&gt;DECLARE    quantity integer :&#x3D; 30;BEGIN    RAISE NOTICE &amp;#x27;Quantity">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/pgsql.jpeg">
-<meta property="article:published_time" content="2022-06-16T11:59:53.000Z">
-<meta property="article:modified_time" content="2022-06-16T13:34:46.982Z">
+<meta property="article:published_time" content="2022-06-16T13:33:40.000Z">
+<meta property="article:modified_time" content="2022-06-16T13:35:25.494Z">
 <meta property="article:author" content="Guo">
 <meta property="article:tag" content="pgsql">
-<meta property="article:tag" content="函数">
+<meta property="article:tag" content="存储过程">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/pgsql.jpeg">
   
   
-  <title>pgsql的常用函数 - 红豆饼</title>
+  <title>pgsql存储过程 plpgsql - 红豆饼</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -179,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="pgsql的常用函数">
+            <span class="h2" id="subtitle" title="pgsql存储过程 plpgsql">
               
             </span>
 
@@ -189,7 +189,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-06-16 19:59" pubdate>
+      <time datetime="2022-06-16 21:33" pubdate>
         2022年6月16日 晚上
       </time>
     </span>
@@ -200,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      498 字
     </span>
   
 
@@ -209,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14 分钟
+      5 分钟
     </span>
   
 
@@ -238,27 +238,10 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pgsql的常用函数</h1>
+            <h1 style="display: none">pgsql存储过程 plpgsql</h1>
             
             <div class="markdown-body">
-              <h4 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h4><p>用法:   || </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># back字段 由 字符串和city字段重新拼接</span><br>update cksw SET back= <span class="hljs-string">&#x27;由&#x27;</span> || city || <span class="hljs-string">&#x27;上报后转入！&#x27;</span> || back<br></code></pre></td></tr></table></figure>
-
-<h4 id="合并字符串函数"><a href="#合并字符串函数" class="headerlink" title="合并字符串函数"></a>合并字符串函数</h4><p>用法：concat(a,b,c,,,,) 函数将所有参数链接为一个字符串并返回结果。 参数中的 NULL 会被忽略。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">select concat(<span class="hljs-string">&#x27;postgresql&#x27;</span>,<span class="hljs-string">&#x27;13&#x27;</span>) , concat(<span class="hljs-string">&#x27;postgresql&#x27;</span>,null,<span class="hljs-string">&#x27;testdb&#x27;</span>);<br><span class="hljs-comment"># postgresql13 postgresqltestdb</span><br></code></pre></td></tr></table></figure>
-<p>concat_ws(x,s1,s2,,,) 函数使用分隔符连接一个或多个参数的字符串表示并返回结果。 参数中的 NULL 会被忽略。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">SELECT concat_ws(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;Hello&#x27;</span>,null, <span class="hljs-string">&#x27;World&#x27;</span>)<br><span class="hljs-comment"># Hello World</span><br></code></pre></td></tr></table></figure>
-<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><p>用法: 用于搜索并用新字符串替换所有出现的字符串。<br>REPLACE(source, old_text, new_text)<br>source是您要替换它的字符串<br>old_text是您要搜索和替换的文本。如果old_text在字符串中多次出现，则所有出现的内容都将被替换<br>new_text是新文本，它将替换旧文本(old_text)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 替换city字段为荷塘区</span><br>update cksw <span class="hljs-built_in">set</span> city=REPLACE(city,city,<span class="hljs-string">&#x27;荷塘区&#x27;</span>)<br><br><span class="hljs-comment"># 替换email字段中所有的sakilacustomer.org 为 geeksforgeeks.org</span><br>UPDATE customer SET email = REPLACE(email,<span class="hljs-string">&#x27;sakilacustomer.org&#x27;</span>,<span class="hljs-string">&#x27;geeksforgeeks.org&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<h4 id="计算字符串字符数和字符串长度的函数"><a href="#计算字符串字符数和字符串长度的函数" class="headerlink" title="计算字符串字符数和字符串长度的函数"></a>计算字符串字符数和字符串长度的函数</h4><p>用法：char_length(str)返回值为字符串str所包含的字符个数。一个多字节字符算作一个单字符。<br>length(str)返回值为字符串的字节长度，使用utf8编码字符集时，一个汉字是3字节，一个数字或字母算一个字节。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">select char_length(<span class="hljs-string">&#x27;zhang&#x27;</span>),char_length(<span class="hljs-string">&#x27;张&#x27;</span>)<br><span class="hljs-comment"># 5 1</span><br>select length(<span class="hljs-string">&#x27;zhang&#x27;</span>),length(<span class="hljs-string">&#x27;张&#x27;</span>)<br><span class="hljs-comment"># 5 1</span><br></code></pre></td></tr></table></figure>
-<p>length函数的计算结果和char_length函数相同，因为英文字符的个数和所占字节相同，一个字符占一个字节。</p>
-<h4 id="在指定字符串中提取最左侧、最右侧的指定数量的字符并返回"><a href="#在指定字符串中提取最左侧、最右侧的指定数量的字符并返回" class="headerlink" title="在指定字符串中提取最左侧、最右侧的指定数量的字符并返回"></a>在指定字符串中提取最左侧、最右侧的指定数量的字符并返回</h4><p>用法:left(str, num)<br>参数<br>str 必需的。 一个字符串。<br>num 必需的。 需要返回的字符的数量。它可以是正数或者负数。如果它是负数，left() 函数将返回除了最右侧的 -num 个字符之外的其他字符。<br>返回值<br>left() 函数返回字符串 str 的最左侧的 num 个字符。<br>如果 num 是负数，left() 函数将返回字符串中除了最右侧的 -num 个字符之外的其他字符。<br>如果 num 大于 str 的长度，left() 函数将返回 str。<br>如果 num 等于 0, left() 函数将返回空船 ‘’。<br>若参数为 NULL，该函数将返回 NULL。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">SELECT left(<span class="hljs-string">&#x27;hello&#x27;</span>, 2)<br><span class="hljs-comment"># he</span><br>SELECT left(<span class="hljs-string">&#x27;hello&#x27;</span>, -3)<br><span class="hljs-comment"># he</span><br>SELECT left(<span class="hljs-string">&#x27;hello&#x27;</span>, 0)<br><span class="hljs-comment"># &#x27;&#x27;</span><br>SELECT left(<span class="hljs-string">&#x27;hello&#x27;</span>, null)<br><span class="hljs-comment"># null</span><br></code></pre></td></tr></table></figure>
-
-
-<h4 id="感谢以下帮助"><a href="#感谢以下帮助" class="headerlink" title="感谢以下帮助"></a>感谢以下帮助</h4><p><a target="_blank" rel="noopener" href="https://www.sjkjc.com/postgresql-ref/">数据库教程</a><br><a target="_blank" rel="noopener" href="http://t.zoukankan.com/dyaqi-p-15402902.html">zoukankan</a></p>
+              <h4 id="创建存储过程"><a href="#创建存储过程" class="headerlink" title="创建存储过程"></a>创建存储过程</h4><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">CREATE OR REPLACE FUNCTION somefunc() RETURNS <span class="hljs-built_in">integer</span> AS $$<br>&lt;&lt; <span class="hljs-string">outerblock &gt;&gt;</span><br><span class="hljs-string">DECLARE</span><br><span class="hljs-string">    quantity integer := 30;</span><br><span class="hljs-string">BEGIN</span><br><span class="hljs-string">    RAISE NOTICE &#x27;Quantity here is %&#x27;, quantity;  -- Prints 30</span><br><span class="hljs-string">    quantity := 50;</span><br><span class="hljs-string">    --</span><br><span class="hljs-string">    -- 创建一个子块</span><br><span class="hljs-string">    --</span><br><span class="hljs-string">    DECLARE</span><br><span class="hljs-string">        quantity integer := 80;</span><br><span class="hljs-string">    BEGIN</span><br><span class="hljs-string">        RAISE NOTICE &#x27;Quantity here is %&#x27;, quantity;  -- Prints 80</span><br><span class="hljs-string">        RAISE NOTICE &#x27;Outer quantity here is %&#x27;, outerblock</span>.quantity;  -- Prints 50<br>				<br>    END;<br><br>    RAISE NOTICE <span class="hljs-string">&#x27;Quantity here is %&#x27;</span>, quantity;  -- Prints 50<br>		RETURN quantity;<br>		<br>END;<br>$$ LANGUAGE plpgsql;<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -278,7 +261,7 @@
                     
                       <a class="hover-with-bg" href="/tags/pgsql/">pgsql</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%87%BD%E6%95%B0/">函数</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
                     
                   </div>
                 
@@ -295,18 +278,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/16/pythonforsql/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python的数据库操作</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/16/pythondatetimefunction/">
-                        <span class="hidden-mobile">python的时间操作函数</span>
+                      <a href="/2022/06/16/pythonforsql/">
+                        <span class="hidden-mobile">python的数据库操作</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
