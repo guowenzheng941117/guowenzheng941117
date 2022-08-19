@@ -16,25 +16,25 @@
   <meta name="author" content="Guo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="为Django类视图添加装饰器 在类视图中使用为函数视图准备的装饰器时，不能直接添加装饰器，需要使用method_decorator将其转换为适用于类视图方法的装饰器。 method_decorator装饰器使用name参数指明被装饰的方法 第一种添加装饰器的方法12345678910111213141516# 在想要加装饰器的类的 应用中 # views.pydef my_decorator(v">
+    <meta name="description" content="基础环境说明 龙蜥操作系统8.4 django4.1 python3.9  操作系统环境搭建 升级所有包同时也升级软件和系统内核 1yum -y update 升级更新结束后reboot重启系统  使用dnf安装python3.9 1dnf install python39 升级pip 1python3 -m pip install --upgrade pip 安装django 123pip3 i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="django中使用装饰器">
-<meta property="og:url" content="http://example.com/2022/08/13/decorator-in-django/index.html">
+<meta property="og:title" content="在宝塔中运行django">
+<meta property="og:url" content="http://example.com/2022/08/19/djangorunbt/index.html">
 <meta property="og:site_name" content="红豆饼">
-<meta property="og:description" content="为Django类视图添加装饰器 在类视图中使用为函数视图准备的装饰器时，不能直接添加装饰器，需要使用method_decorator将其转换为适用于类视图方法的装饰器。 method_decorator装饰器使用name参数指明被装饰的方法 第一种添加装饰器的方法12345678910111213141516# 在想要加装饰器的类的 应用中 # views.pydef my_decorator(v">
+<meta property="og:description" content="基础环境说明 龙蜥操作系统8.4 django4.1 python3.9  操作系统环境搭建 升级所有包同时也升级软件和系统内核 1yum -y update 升级更新结束后reboot重启系统  使用dnf安装python3.9 1dnf install python39 升级pip 1python3 -m pip install --upgrade pip 安装django 123pip3 i">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/django.jpeg">
-<meta property="article:published_time" content="2022-08-13T06:19:21.000Z">
-<meta property="article:modified_time" content="2022-08-13T06:24:36.173Z">
+<meta property="article:published_time" content="2022-08-19T05:52:24.000Z">
+<meta property="article:modified_time" content="2022-08-19T06:29:34.181Z">
 <meta property="article:author" content="Guo">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="django">
-<meta property="article:tag" content="decorator">
+<meta property="article:tag" content="宝塔">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/django.jpeg">
   
   
-  <title>django中使用装饰器 - 红豆饼</title>
+  <title>在宝塔中运行django - 红豆饼</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="django中使用装饰器">
+            <span class="h2" id="subtitle" title="在宝塔中运行django">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-08-13 14:19" pubdate>
-        2022年8月13日 下午
+      <time datetime="2022-08-19 13:52" pubdate>
+        2022年8月19日 下午
       </time>
     </span>
   
@@ -201,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      1.5k 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18 分钟
+      13 分钟
     </span>
   
 
@@ -239,16 +239,57 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">django中使用装饰器</h1>
+            <h1 style="display: none">在宝塔中运行django</h1>
             
             <div class="markdown-body">
-              <p>为Django类视图添加装饰器</p>
-<p>在类视图中使用为函数视图准备的装饰器时，不能直接添加装饰器，需要使用method_decorator将其转换为适用于类视图方法的装饰器。</p>
-<p>method_decorator装饰器使用name参数指明被装饰的方法</p>
-<h4 id="第一种添加装饰器的方法"><a href="#第一种添加装饰器的方法" class="headerlink" title="第一种添加装饰器的方法"></a>第一种添加装饰器的方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在想要加装饰器的类的 应用中 </span><br><span class="hljs-comment"># views.py</span><br>def my_decorator(view_func):<br>    <span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;定义装饰器&quot;</span><span class="hljs-string">&quot;&quot;</span><br>    def wrapper(request, *args, **kwargs):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;装饰器被调用了&quot;</span>)<br>		<span class="hljs-built_in">return</span> view_func(request, *args, **kwargs)<br>    <span class="hljs-built_in">return</span> warpper<br>class DemoView(View):<br>    def get(request):<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&quot;get请求&quot;</span>)<br> <br>    def post(request):<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&quot;pose请求&quot;</span>)<br><span class="hljs-comment"># url.py</span><br>url(r<span class="hljs-string">&#x27;^demo/$&#x27;</span>, views.my_decorator(view.DemoView.as_view()))<br></code></pre></td></tr></table></figure>
-<h4 id="第二种添加装饰器的方法"><a href="#第二种添加装饰器的方法" class="headerlink" title="第二种添加装饰器的方法"></a>第二种添加装饰器的方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># views.py</span><br>def my_decorator(view_func):<br>    <span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;定义装饰器&quot;</span><span class="hljs-string">&quot;&quot;</span><br>    def wrapper(request, *args, **kwargs):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;装饰器被调用了&quot;</span>)<br>		<span class="hljs-built_in">return</span> view_func(request, *args, **kwargs)<br>    <span class="hljs-built_in">return</span> warpper<br> <br><span class="hljs-comment"># 为全部请求方法添加装饰器</span><br><span class="hljs-comment"># method_decorator的作用是为函数视图装饰器补充第一个self参数，以适配类视图方法。</span><br>@method_decorator(my_decorator, name=<span class="hljs-string">&#x27;dispatch&#x27;</span>)<br>class DemoView(View):<br>    def get(self, request):<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&quot;get请求&quot;</span>)<br> <br>    def post(self, request):<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&quot;pose请求&quot;</span>)<br> <br><span class="hljs-comment"># 为特定请求方法添加装饰器</span><br>@method_decorator(my_decorator, name=<span class="hljs-string">&#x27;get&#x27;</span>)<br>class DemoView(View):<br>    def get(self, request):<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&quot;get请求&quot;</span>)<br> <br>    def post(self, request):<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&quot;pose请求&quot;</span>)<br> <br><span class="hljs-comment"># urls</span><br>url(r<span class="hljs-string">&#x27;^demo/$&#x27;</span>, view.DemoView.as_view())<br></code></pre></td></tr></table></figure>
-<h4 id="第三种添加装饰器的方法"><a href="#第三种添加装饰器的方法" class="headerlink" title="第三种添加装饰器的方法"></a>第三种添加装饰器的方法</h4><p>如果需要为类视图的多个方法添加装饰器，但又不是所有的方法（为所有方法添加装饰器参考上面例子），也可以直接在需要添加装饰器的方法上使用method_decorator（就是为指定方法添加装饰器），如下所示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">from django.utils.decorators import method_decorator<br><br>def my_decorator(view_func):<br>    <span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;定义装饰器&quot;</span><span class="hljs-string">&quot;&quot;</span><br>    def wrapper(request, *args, **kwargs):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;装饰器被调用了&quot;</span>)<br>		<span class="hljs-built_in">return</span> view_func(request, *args, **kwargs)<br>    <span class="hljs-built_in">return</span> warpper<br><span class="hljs-comment"># 为特定请求方法添加装饰器</span><br>class DemoView(View):<br> <br>    @method_decorator(my_decorator)  <span class="hljs-comment"># 为get方法添加了装饰器</span><br>    def get(self, request):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;get方法&#x27;</span>)<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&#x27;ok&#x27;</span>)<br> <br>    @method_decorator(my_decorator)  <span class="hljs-comment"># 为post方法添加了装饰器</span><br>    def post(self, request):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;post方法&#x27;</span>)<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&#x27;ok&#x27;</span>)<br> <br>    def put(self, request):  <span class="hljs-comment"># 没有为put方法添加装饰器</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;put方法&#x27;</span>)<br>        <span class="hljs-built_in">return</span> HttpResponse(<span class="hljs-string">&#x27;ok&#x27;</span>)<br></code></pre></td></tr></table></figure>
+              <h4 id="基础环境说明"><a href="#基础环境说明" class="headerlink" title="基础环境说明"></a>基础环境说明</h4><ul>
+<li>龙蜥操作系统8.4</li>
+<li>django4.1</li>
+<li>python3.9</li>
+</ul>
+<h4 id="操作系统环境搭建"><a href="#操作系统环境搭建" class="headerlink" title="操作系统环境搭建"></a>操作系统环境搭建</h4><ul>
+<li><p>升级所有包同时也升级软件和系统内核</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">yum -y update<br></code></pre></td></tr></table></figure>
+<p>升级更新结束后reboot重启系统</p>
+</li>
+<li><p>使用dnf安装python3.9</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dnf install python39<br></code></pre></td></tr></table></figure></li>
+<li><p>升级pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -m pip install --upgrade pip<br></code></pre></td></tr></table></figure></li>
+<li><p>安装django</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install Django<br><span class="hljs-comment"># 安装制定版本的Django</span><br>pip3 install Django==4.1<br></code></pre></td></tr></table></figure></li>
+<li><p>安装pgsql库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install psycopg2<br><span class="hljs-comment"># 如上述安装失败，则使用下面的命令安装</span><br>pip3 install psycopg2-binary<br></code></pre></td></tr></table></figure></li>
+<li><p>使用 Daphne 托管 Django ，支持异步</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -m pip install daphne<br></code></pre></td></tr></table></figure>
+<h4 id="安装宝塔面板"><a href="#安装宝塔面板" class="headerlink" title="安装宝塔面板"></a>安装宝塔面板</h4><p>此处自行参考宝塔面板教程</p>
+</li>
+<li><p>修改面板账号</p>
+</li>
+<li><p>修改面板密码</p>
+</li>
+<li><p>安装nginx</p>
+</li>
+<li><p>安装pgsql</p>
+</li>
+<li><p>安装supervisor管理器</p>
+</li>
+<li><p>安装FTP</p>
+</li>
+<li><p>开启监控</p>
+</li>
+</ul>
+<h4 id="安装django项目"><a href="#安装django项目" class="headerlink" title="安装django项目"></a>安装django项目</h4><p>此处参考安装文档或者上传完整项目到服务器</p>
+<ul>
+<li>修改setting.py数据库配置<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">DATABASES = &#123;<br>    <span class="hljs-comment"># default...</span><br>    <span class="hljs-string">&#x27;pgsql&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;ENGINE&#x27;</span>: <span class="hljs-string">&#x27;django.db.backends.postgresql&#x27;</span>,<br>        <span class="hljs-string">&#x27;OPTIONS&#x27;</span>: &#123;<br>            <span class="hljs-string">&#x27;service&#x27;</span>: <span class="hljs-string">&#x27;my_service&#x27;</span>,<br>            <span class="hljs-string">&#x27;passfile&#x27;</span>: <span class="hljs-string">&#x27;.my_pgpass&#x27;</span>,<br>        &#125;,<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>~&#x2F; 目录下  建立  .pg_service.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[my_service]<br>host=localhost<br>user=USER<br>dbname=NAME<br>port=5432<br></code></pre></td></tr></table></figure></li>
+<li>setting.py 同级目录下 建立 .my_pgpass<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">localhost:5432:NAME:USER:PASSWORD<br></code></pre></td></tr></table></figure>
+<h4 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h4></li>
+<li>配置nginx转发<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">server&#123;<br>	<span class="hljs-comment">#监听18007端口</span><br>    listen 18007;<br>	<br>     location / &#123;<br>        proxy_pass http://127.0.0.1:8000;<br>        proxy_http_version 1.1;<br>        proxy_set_header Upgrade <span class="hljs-variable">$http_upgrade</span>;<br>        proxy_set_header Connection <span class="hljs-string">&quot;upgrade&quot;</span>;<br>        proxy_redirect off;<br>        proxy_set_header Host <span class="hljs-variable">$host</span>;<br>        proxy_set_header X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>        proxy_set_header X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>        proxy_set_header X-Forwarded-Host <span class="hljs-variable">$server_name</span>;<br>    &#125;<br><br>    location /web &#123;<br>        root /srv/vs12prj/vs12prj/src/dist;<br>        try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.html;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>配置supervisor运行命令，与manage.py目录同级<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">daphne zhiliao.asgi:application<br></code></pre></td></tr></table></figure></li>
+<li>宝塔面板放行18007端口</li>
+</ul>
+
             </div>
             <hr>
             <div>
@@ -269,7 +310,7 @@
                     
                       <a class="hover-with-bg" href="/tags/django/">django</a>
                     
-                      <a class="hover-with-bg" href="/tags/decorator/">decorator</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9D%E5%A1%94/">宝塔</a>
                     
                   </div>
                 
@@ -286,18 +327,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/19/djangorunbt/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">在宝塔中运行django</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/13/jwt-in-django/">
-                        <span class="hidden-mobile">django中使用jwt</span>
+                      <a href="/2022/08/13/decorator-in-django/">
+                        <span class="hidden-mobile">django中使用装饰器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
